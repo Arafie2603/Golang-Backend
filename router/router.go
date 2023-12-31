@@ -28,7 +28,7 @@ func SetupRouter() *gin.Engine {
 	// Rute untuk foto
 	photoGroup := r.Group("/photos")
 	{
-		photoGroup.POST("", controllers.CreatePhoto)
+		photoGroup.POST("/createPhoto", controllers.CreatePhoto)
 		photoGroup.GET("", controllers.GetPhotos)
 
 		// Menggunakan otentikasi JWT untuk melindungi rute-rute di bawah ini

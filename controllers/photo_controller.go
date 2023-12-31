@@ -3,11 +3,13 @@
 package controllers
 
 import (
-	"github.com/gin-gonic/gin"
 	"finpro-golang2/database"
+	"finpro-golang2/helpers"
 	"finpro-golang2/models"
 	"net/http"
 	"strconv"
+    "log"
+	"github.com/gin-gonic/gin"
 )
 
 func CreatePhoto(c *gin.Context) {
@@ -30,16 +32,29 @@ func CreatePhoto(c *gin.Context) {
 
 // GetPhotos digunakan untuk mendapatkan daftar semua foto
 func GetPhotos(c *gin.Context) {
-    // Dapatkan daftar foto dari database
-    var photos []models.Photo
-    if err := database.DB.Find(&photos).Error; err != nil {
+    // Dapatkan token dari header permintaan
+    tokenString := c.Request.Header.Get("Authorization")
+
+    // Verifikasi dan ekstrak ID pengguna dari token
+    userID, err := helpers.ExtractUserIDFromToken(tokenString)
+    if err != nil {
+        c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+        return
+    }
+
+    // Dapatkan daftar foto dari database berdasarkan ID pengguna
+    var userPhotos []models.Photo
+    if err := database.DB.Where("user_id = ?", userID).Find(&userPhotos).Error; err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
         return
     }
 
+    log.Printf("UserID from token: %d", userID)
+
     // Kirim respons
-    c.JSON(http.StatusOK, photos)
+    c.JSON(http.StatusOK, userPhotos)
 }
+
 
 func UpdatePhoto(c *gin.Context) {
 	// Mendapatkan ID foto dari parameter URL

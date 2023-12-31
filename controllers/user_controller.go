@@ -10,6 +10,7 @@ import (
     "strconv"
 	"fmt"
     "finpro-golang2/database"
+	"log"
 )
 
 func Register(c *gin.Context) {
@@ -46,39 +47,38 @@ func Register(c *gin.Context) {
 }
 
 // controllers/user_controller.go
-
-// ...
-
 func Login(c *gin.Context) {
-    // Baca data yang diterima dari body request
-    var userInput models.User
-    if err := c.ShouldBindJSON(&userInput); err != nil {
-        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-        return
-    }
+	// Baca data yang diterima dari body request
+	var userInput models.User
+	if err := c.ShouldBindJSON(&userInput); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
 
-    // Cari pengguna berdasarkan email
-    var userFromDB models.User
-    if err := database.DB.Where("email = ?", userInput.Email).First(&userFromDB).Error; err != nil {
-        c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
-        return
-    }
+	// Cari pengguna berdasarkan email
+	var userFromDB models.User
+	if err := database.DB.Where("email = ?", userInput.Email).First(&userFromDB).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+		return
+	}
 
-    // Verifikasi password
-    if !helpers.CheckPasswordHash(userInput.Password, userFromDB.Password) {
-        c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid password"})
-        return
-    }
+	// Verifikasi password
+	if !helpers.CheckPasswordHash(userInput.Password, userFromDB.Password) {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid password"})
+		return
+	}
 
-    // Generate token setelah login berhasil
-    token, err := helpers.GenerateToken(int(userFromDB.ID))
-    if err != nil {
-        c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
-        return
-    }
+	// Generate token setelah login berhasil
+	token, err := helpers.GenerateToken(int(userFromDB.ID))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
+		return
+	}
 
-    // Kirim respons dengan token
-    c.JSON(http.StatusOK, gin.H{"token": token})
+	log.Printf("User with ID %d has logged in", userFromDB.ID)
+
+	// Kirim respons dengan token
+	c.JSON(http.StatusOK, gin.H{"token": token})
 }
 
 
@@ -135,5 +135,4 @@ func DeleteUser(c *gin.Context) {
 
 	fmt.Println("User deleted successfully")
 }
-
 
