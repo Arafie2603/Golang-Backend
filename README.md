@@ -1,1 +1,10 @@
-# task-5-pbi-btpns-Muhammad-Arafie-Setiawan
+# Screenshoot Testing PostmanAPI
+![Screenshot 2024-01-01 185646](https://github.com/Arafie2603/task-5-pbi-btpns-Muhammad-Arafie-Setiawan/assets/103415642/88f5330c-3ef2-49e7-ba24-ce24d7d86f2d)
+![Screenshot 2024-01-01 181541](https://github.com/Arafie2603/task-5-pbi-btpns-Muhammad-Arafie-Setiawan/assets/103415642/1d4347ed-0570-4e46-85c5-7de6f047c9f9)
+![Screenshot 2024-01-01 185838](https://github.com/Arafie2603/task-5-pbi-btpns-Muhammad-Arafie-Setiawan/assets/103415642/e68557eb-a537-4377-acda-9308a132b187)
+![Screenshot 2024-01-01 185818](https://github.com/Arafie2603/task-5-pbi-btpns-Muhammad-Arafie-Setiawan/assets/103415642/6ee5e84a-ab5a-4c42-80d8-3238f71364c0)
+![Screenshot 2024-01-01 185624](https://github.com/Arafie2603/task-5-pbi-btpns-Muhammad-Arafie-Setiawan/assets/103415642/d8bfbcab-dd33-41e7-b446-c93c80c85b69)
+![Screenshot 2024-01-01 190259](https://github.com/Arafie2603/task-5-pbi-btpns-Muhammad-Arafie-Setiawan/assets/103415642/7187f7e3-5d71-462f-8a9a-26638447ba03)
+![Screenshot 2024-01-01 190020](https://github.com/Arafie2603/task-5-pbi-btpns-Muhammad-Arafie-Setiawan/assets/103415642/fe2dbd58-5564-409c-875b-8dfdae29ed1d)
+![Screenshot 2024-01-01 185955](https://github.com/Arafie2603/task-5-pbi-btpns-Muhammad-Arafie-Setiawan/assets/103415642/e115b69a-215e-40d8-8fc7-a162e1789aad)
+![Screenshot 2024-01-01 190312](https://github.com/Arafie2603/task-5-pbi-btpns-Muhammad-Arafie-Setiawan/assets/103415642/81ad8398-da5a-435b-bedd-06a2de8bd35c)
