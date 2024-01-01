@@ -15,10 +15,8 @@ func GenerateToken(userID int) (string, error) {
 		"iat":     time.Now().Unix(),
 	}
 
-	// Membuat token dengan klaim
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	// Menandatangani token dengan secret key dan mendapatkan string token
 	tokenString, err := token.SignedString(secretKey)
 	if err != nil {
 		return "", err
@@ -42,15 +40,12 @@ func ExtractUserIDFromToken(tokenString string) (int, error) {
         }
     }
 
-    return 0, errors.New("Invalid token or user ID not found in claims")
+    return 0, errors.New("invalid token or user ID not found in claims")
 }
 
-// VerifyToken memeriksa keaslian token JWT dan mengembalikan klaim token jika valid
 func VerifyToken(tokenString string) (jwt.MapClaims, error) {
-	// Mendeklarasikan fungsi pembacaan klaim token
 	claims := jwt.MapClaims{}
 
-	// Verifikasi token
 	token, err := jwt.ParseWithClaims(tokenString, &claims, func(token *jwt.Token) (interface{}, error) {
 		return secretKey, nil
 	})

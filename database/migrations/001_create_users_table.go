@@ -1,5 +1,3 @@
-// database/migrations/001_create_users_table.go
-
 package migrations
 
 import (

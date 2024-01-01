@@ -1,5 +1,3 @@
-// helpers/headers.go
-
 package helpers
 
 import (

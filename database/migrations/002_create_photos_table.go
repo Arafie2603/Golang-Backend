@@ -1,5 +1,3 @@
-// database/migrations/002_create_photos_table.go
-
 package migrations
 
 import (

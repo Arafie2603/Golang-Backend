@@ -1,9 +1,7 @@
-// helpers/bcrypt.go
 package helpers
 
 import "golang.org/x/crypto/bcrypt"
 
-// HashPassword digunakan untuk menghash password menggunakan bcrypt
 func HashPassword(password string) (string, error) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
